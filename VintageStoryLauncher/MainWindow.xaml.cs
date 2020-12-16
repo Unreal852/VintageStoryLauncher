@@ -19,6 +19,12 @@ namespace VintageStoryLauncher
         public  string     Email      { get; set; }
         public  string     Password   { get; set; }
 
+        public string Message
+        {
+            get => this.FindControl<TextBlock>("MessageBlock").Text;
+            set { this.FindControl<TextBlock>("MessageBlock").Text = value; }
+        }
+
         private void InitializeComponent()
         {
             DataContext = this;
@@ -30,15 +36,21 @@ namespace VintageStoryLauncher
             await WebManager.LoadWebsite();
             if (!WebManager.IsWebsiteLoaded)
             {
-                Title = "Failed to login";
+                Message = "Failed to load website";
                 return;
             }
 
             AuthResult result = await WebManager.Login(Email, Password);
             if (!result.Success)
-                Title = "Failed";
+                Message = result.Message;
             else
-                Title = "Success";
+            {
+                AuthInfo authInfo = await WebManager.GetAuthInfo();
+                if (authInfo == default)
+                    Message = "Login successful but failed to get user profile.";
+                else
+                    Message = $"Login successful. Welcome {authInfo.PlayerName} ({authInfo.LastName.ToUpper()} {authInfo.FirstName}, {authInfo.Email})";
+            }
         }
     }
 }

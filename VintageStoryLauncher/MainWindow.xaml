@@ -5,17 +5,16 @@
         mc:Ignorable="d" Width="800" Height="450"
         x:Class="VintageStoryLauncher.MainWindow"
         Title="Vintage Story Launcher">
-    <Grid ColumnDefinitions="350,Auto">
-        <StackPanel Orientation="Vertical" Background="#272727">
-            <StackPanel Orientation="Horizontal">
-                <TextBlock TextAlignment="Center" Text="Email: " />
-                <TextBox Name="TxtEmail" Width="250" Text="{Binding Email}" />
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock TextAlignment="Center" Text="Password: " />
-                <TextBox Name="TxtPassword" Width="250" PasswordChar="*" Text="{Binding Password}"  />
-            </StackPanel>
-            <Button Content="Login" Click="Button_OnClick"/>
+    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Background="#272727">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <TextBlock TextAlignment="Center" Text="Email:" Width="150" />
+            <TextBox Name="TxtEmail" Width="250" Text="{Binding Email}" />
         </StackPanel>
-    </Grid>
+        <StackPanel Orientation="Horizontal" Margin="0 5 0 5">
+            <TextBlock TextAlignment="Center" Text="Password:" Width="150" />
+            <TextBox Name="TxtPassword" Width="250" PasswordChar="*" Text="{Binding Password}" />
+        </StackPanel>
+        <Button Content="Login" Width="250" HorizontalAlignment="Right" Click="Button_OnClick" Margin="0 0 0 5" />
+        <TextBlock Name="MessageBlock" HorizontalAlignment="Center" TextAlignment="Center" />
+    </StackPanel>
 </Window>
