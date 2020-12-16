@@ -2,8 +2,20 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        mc:Ignorable="d" Width="800" Height="450"
         x:Class="VintageStoryLauncher.MainWindow"
         Title="Vintage Story Launcher">
-    Vintage Story Launcher
+    <Grid ColumnDefinitions="350,Auto">
+        <StackPanel Orientation="Vertical" Background="#272727">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock TextAlignment="Center" Text="Email: " />
+                <TextBox Name="TxtEmail" Width="250" Text="{Binding Email}" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock TextAlignment="Center" Text="Password: " />
+                <TextBox Name="TxtPassword" Width="250" PasswordChar="*" Text="{Binding Password}"  />
+            </StackPanel>
+            <Button Content="Login" Click="Button_OnClick"/>
+        </StackPanel>
+    </Grid>
 </Window>
